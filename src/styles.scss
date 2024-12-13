@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: rgb(23, 24, 24);
+}
+
+@layer base {
+    .nav-link{
+        @apply hover:bg-slate-400  border bg-green-600 hover:border-slate-800 items-center flex h-full px-4
+    }
+}

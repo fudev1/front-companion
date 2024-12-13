@@ -1,0 +1,11 @@
+<ul class="md:flex gap-x-4 items-center hidden h-full"> 
+    @for (link of links; track link.path){
+        <li class="h-full">
+            <a class="hover:bg-slate-400  border hover:border-slate-800 items-center flex h-full px-4" [routerLink]="link.path">
+                {{ link.label }}
+            </a>
+        </li>
+    }
+</ul>
+
+
