@@ -1,6 +1,31 @@
-<app-navbar [navLinks]="navigationThronesLiberty"></app-navbar>
+<!-- <app-navbar [navLinks]="navigationThronesLiberty"></app-navbar>
 
-<main class="text-white max-w-7xl mx-auto border border-white mt-5" >
+<main class="mx-auto mt-5 text-white border border-white max-w-7xl" >
     <p class="text-white bg-emerald-700">layout-thrones-liberty works!</p>
     <router-outlet></router-outlet>
-</main>
+</main> -->
+
+<div class="flex flex-col min-h-screen theme-thrones-liberty">
+    <header class="flex p-2 shadow-md "> 
+        <app-navbar class="w-full mx-auto max-w-7xl" [navLinks]="navigationThronesLiberty"></app-navbar>
+    </header>
+
+    <section class="bg-gray-200 py-80 hero">
+        <p class="text-center">content hero here</p>
+    </section>
+    
+    <main class="w-full p-2 mx-auto text-white border border-black max-w-7xl" >
+        <div class="text-center text-skin-secondary">
+            <p class="text-white bg-emerald-700">layout-main works!</p>
+            <router-outlet></router-outlet>
+        </div>
+        
+    </main>
+
+    <footer class="py-4 text-gray-400 bg-gray-800">
+        <p>footer here</p>
+    </footer>
+    
+</div>
+
+

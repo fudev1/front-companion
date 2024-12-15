@@ -4,7 +4,27 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      borderRadius: {
+        skin: 'var(--button-radius)',
+      },
+      colors: {
+          skin: {
+            primary: 'var(--primary)',
+            secondary: 'var(--secondary)',
+            accent: 'var(--accent)',
+            bg: 'var(--bg)',
+          }
+      },
+    },
+    // colors: {
+      //   skin: {
+      //     primary: 'var(--primary)',
+      //     secondary: 'var(--secondary)',
+      //     accent: 'var(--accent)',
+      //     bg: 'var(--bg)',
+      //   }
+    // }
   },
   plugins: [],
 }

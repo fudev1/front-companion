@@ -1,0 +1,23 @@
+:root {
+    --primary: #DFFF00;
+    --secondary: #B8CC00;
+    --accent: #899900;
+    --bg: #171717;
+}
+  
+.theme-main {
+    --primary: #4A90E2;
+    --secondary: #357ABD;
+    --accent: #2B629A;
+    --bg: rgba(23, 24, 24, 0.5);
+    
+}
+  
+.theme-new-world {
+    --primary: #FFD700;
+    --secondary: #FFA500;
+    --accent: #FF4500;
+    --bg: #222222;
+    --button-radius: 0px;
+    --button-opacity: 0.5;
+}
