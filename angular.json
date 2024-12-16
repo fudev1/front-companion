@@ -57,7 +57,6 @@
               }
             ],
             "styles": [
-              "src/app/core/themes/variables.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -117,7 +116,6 @@
               }
             ],
             "styles": [
-              "src/app/core/themes/variables.scss",
               "src/styles.scss"
             ],
             "scripts": []
