@@ -12,6 +12,7 @@ import { WarsNewWorldComponent } from './p-new-world/pages/wars-new-world/wars-n
 import { ServersNewWorldComponent } from './p-new-world/pages/servers-new-world/servers-new-world.component';
 import { ForumNewWorldComponent } from './p-new-world/pages/forum-new-world/forum-new-world.component';
 import { HomeThronesLibertyComponent } from './p-thrones-liberty/pages/home-thrones-liberty/home-thrones-liberty.component';
+import { LoginComponent } from './core/auth/login/login.component';
 
 export const routes: Routes = [
     {
@@ -41,7 +42,8 @@ export const routes: Routes = [
         children : [
             { path: '', component: HomeThronesLibertyComponent },
         ]
-    }
+    },
+    { path: 'login/callback', component: LoginComponent },
     // {
     //     path: 'thrones',
     //     component: LayoutMainComponent,
