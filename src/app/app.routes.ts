@@ -44,6 +44,7 @@ export const routes: Routes = [
         ]
     },
     { path: 'login/callback', component: LoginComponent },
+    { path: 'login', component: LoginComponent },
     // {
     //     path: 'thrones',
     //     component: LayoutMainComponent,
