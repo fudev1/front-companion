@@ -1,0 +1,19 @@
+.auth-required {
+    @apply flex flex-col justify-center items-center min-h-screen bg-gray-50;
+
+    &__container {
+        @apply p-8 mx-4 w-full max-w-md text-center bg-white rounded-lg shadow-md;
+    }
+
+    &__logo {
+        @apply mx-auto mb-4 w-16 h-16;
+    }
+
+    &__title {
+        @apply mb-2 text-2xl font-bold text-gray-900;
+    }
+
+    &__text {
+        @apply mb-6 text-gray-600;
+    }
+}

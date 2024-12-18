@@ -1,12 +1,15 @@
-
-    <nav class="flex items-center justify-between">
-        <div class="flex gap-x-8">
-
-            <app-logo></app-logo>
-            <app-nav-links [links]="navLinks"></app-nav-links>
-            
+<nav class="navbar" [class.translate-y-0]="navbarService.navbarVisible$ | async"
+     [class.translate-y-[-100%]]="!(navbarService.navbarVisible$ | async)">
+  <div class="navbar-container">
+    <div class="navbar-content">
+      <div class="navbar-items">
+        <app-logo></app-logo>
+        <app-nav-links [links]="navLinks"></app-nav-links>
+        <div class="navbar-actions">
+          <app-user-links [links]="userLinks"></app-user-links>
+          <app-login-button></app-login-button>
         </div>
-
-        <app-login-button></app-login-button>
-
-    </nav>
+      </div>
+    </div>
+  </div>
+</nav>

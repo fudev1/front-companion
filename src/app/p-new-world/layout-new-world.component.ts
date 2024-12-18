@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../core/navigation/components/navbar/navbar.component';
-import { NAV_LINKS_NEW_WORLD } from '../core/navigation/config/nav-links';
+import { NAV_LINKS_NEW_WORLD, USER_LINKS_NEW_WORLD } from '../core/navigation/config/nav-links';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -14,5 +14,6 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './layout-new-world.component.scss'
 })
 export class LayoutNewWorldComponent {
-  navigationNewWorld  = NAV_LINKS_NEW_WORLD
+  navigationNewWorld = NAV_LINKS_NEW_WORLD;
+  userLinksNewWorld = USER_LINKS_NEW_WORLD;
 }

@@ -1,0 +1,40 @@
+<nav class="navbar" [ngClass]="getNavbarClass() + ' shadow-lg'"
+     [class.translate-y-0]="navbarService.navbarVisible$ | async"
+     [class.translate-y-[-100%]]="!(navbarService.navbarVisible$ | async)">
+    <div class="container px-4 mx-auto navbar-container">
+        <div class="flex justify-between items-center h-16 navbar-content">
+            <!-- Logo and Company Name -->
+            <div class="flex items-center space-x-4 navbar-items">
+                <app-logo />
+                <a [routerLink]="['/new-world/companies', company.id]" class="flex items-center space-x-2">
+                    <img src="assets/images/new-world-logo.png" alt="New World" class="w-8 h-8">
+                    <span [class]="getTextClass() + ' font-bold text-lg'">{{ company.name }}</span>
+                </a>
+            </div>
+
+            <!-- Navigation -->
+            <div class="flex items-center space-x-8 navbar-items">
+                @for (link of navLinks; track link.path) {
+                    <a [routerLink]="[link.path]" 
+                       [class]="getTextClass() + ' hover:opacity-80 flex items-center space-x-2 text-white hover:text-gray-200'">
+                        @if (link.icon) {
+                            <i class="fas fa-{{ link.icon }}"></i>
+                        }
+                        <span>{{ link.label }}</span>
+                    </a>
+                }
+
+                <!-- Bouton Apply -->
+                <button class="px-4 py-2 text-gray-800 bg-white rounded-md transition-colors duration-200 hover:bg-opacity-90">
+                    Apply
+                </button>
+            </div>
+
+            <!-- User Links and Login -->
+            <div class="flex items-center space-x-4 navbar-actions">
+                <app-user-links [links]="userLinks" />
+                <app-login-button />
+            </div>
+        </div>
+    </div>
+</nav>

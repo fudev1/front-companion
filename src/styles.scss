@@ -2,11 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Order */
+@layer reset, primeng;
+
+@layer reset {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100vh;
+    }
+}
+
 @import './app/core/themes/variables.scss';
+@import "primeng/resources/primeng.css";
 
-// @layer base {
-//     .nav-link{
-//         @apply hover:bg-slate-400  border bg-green-600 hover:border-slate-800 items-center flex h-full px-4
-//     }
-// }
+// Surcharge globale des composants PrimeNG
+.p-button {
+    background: var(--primary-color) ;
+    border-color: var(--primary-color) ;
+    color: var(--primary-text) ;
+    padding: 20px 40px;
+    border-radius: 20px;
+    
+    
+    &:hover {
+        background: var(--primary-color-hover) ;
+        border-color: var(--primary-color-hover) ;
+    }
 
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+
+.navbar {
+    @apply fixed top-0 right-0 left-0 z-50 w-full;
+    @apply transition-transform duration-300;
+    background: var(--nav-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .navbar-container {
+    @apply p-2;
+  }
+  
+  .navbar-content {
+    @apply mx-auto max-w-7xl;
+  }
+  
+  .navbar-items {
+    @apply flex justify-between items-center;
+  }
+  
+  .navbar-actions {
+    @apply flex items-center space-x-4;
+  }
+
+/* Faction Colors */
+.bg-marauders {
+    background-color: rgba(22, 163, 74, 0.95); // Emerald-600 avec transparence
+}
+
+.bg-syndicate {
+    background-color: rgba(147, 51, 234, 0.95); // Purple-600 avec transparence
+}
+
+.bg-covenant {
+    background-color: rgba(202, 138, 4, 0.95); // Yellow-600 avec transparence
+}

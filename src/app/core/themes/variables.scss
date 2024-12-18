@@ -1,23 +1,86 @@
 :root {
-    --primary: #DFFF00;
-    --secondary: #B8CC00;
-    --accent: #899900;
-    --bg: #171717;
-}
-  
-.theme-main {
-    --primary: #4A90E2;
-    --secondary: #357ABD;
-    --accent: #2B629A;
-    --bg: rgba(23, 24, 24, 0.5);
+    // Colors
+    --primary-color: #00FF87;
+    --primary-color-hover: #00cc6e;
+    --primary-text: #FFFFFF;
+    --accent: #00FF87;
     
+    // Background
+    --bg-dark: #15171E;
+    --bg-gradient: linear-gradient(180deg, #15171E 0%, #1E2028 100%);
+    
+    // Text
+    --text-primary: #FFFFFF;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    
+    // Borders & Effects
+    --glow-effect: 0 0 20px rgba(0, 255, 135, 0.3);
+    --border-glow: 0 0 10px rgba(0, 255, 135, 0.5);
+    --border-radius: 8px;
+    
+    // Layout
+    --container-padding: 2rem;
+    --section-spacing: 4rem;
 }
-  
+
+.theme-main {
+    // Colors
+    --primary-color: #00FF87;
+    --primary-color-hover: #00cc6e;
+    --primary-text: #FFFFFF;
+    --accent: #00FF87;
+    
+    // Background
+    --bg-dark: #15171E;
+    --bg-gradient: linear-gradient(180deg, #15171E 0%, #1E2028 100%);
+    
+    // Text
+    --text-primary: #FFFFFF;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    
+    // Borders & Effects
+    --glow-effect: 0 0 20px rgba(0, 255, 135, 0.3);
+    --border-glow: 0 0 10px rgba(0, 255, 135, 0.5);
+    --border-radius: 8px;
+    
+    // Components
+    --button-bg: var(--primary-color);
+    --button-hover: var(--primary-color-hover);
+    --button-text: var(--text-primary);
+    --nav-bg: rgba(21, 23, 30, 0.95);
+    --card-bg: rgba(30, 32, 40, 0.7);
+}
+
 .theme-new-world {
-    --primary: #FFD700;
-    --secondary: #FFA500;
+    --primary-color: #ff7700;
+    --primary-color-hover: #e66900;
+    --primary-text: #ffffff;
     --accent: #FF4500;
-    --bg: #222222;
-    --button-radius: 0px;
-    --button-opacity: 0.5;
+    
+    // Background
+    --bg-dark: #1A1A1A;
+    --bg-gradient: linear-gradient(180deg, #1A1A1A 0%, #2A2A2A 100%);
+    
+    // Text
+    --text-primary: #FFFFFF;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    
+    // Borders & Effects
+    --glow-effect: 0 0 20px rgba(255, 119, 0, 0.3);
+    --border-glow: 0 0 10px rgba(255, 119, 0, 0.5);
+    --border-radius: 0;
+    
+    // Components
+    --button-bg: var(--primary-color);
+    --button-hover: var(--primary-color-hover);
+    --button-text: var(--text-primary);
+    --nav-bg: rgba(26, 26, 26, 0.95);
+    --card-bg: rgba(42, 42, 42, 0.7);
+}
+
+.theme-thrones-liberty {
+    --primary-color: #9c27b0;
+    --primary-color-hover: #8a229b;
+    --primary-text: #ffffff;
+    --accent: #8a229b;
 }

@@ -10,8 +10,8 @@ module.exports = {
       },
       colors: {
           skin: {
-            primary: 'var(--primary)',
-            secondary: 'var(--secondary)',
+            primary: 'var(--primary-color)',
+            secondary: 'var(--secondary-color)',
             accent: 'var(--accent)',
             bg: 'var(--bg)',
           }
@@ -26,6 +26,9 @@ module.exports = {
       //   }
     // }
   },
-  plugins: [],
+  plugins: [
+
+  ],
+
 }
 

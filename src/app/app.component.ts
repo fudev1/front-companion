@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "./core/navigation/components/navbar/navbar.component";
 import { LoginButtonComponent } from './core/navigation/components/login-button/login-button.component';
 import { LogoComponent } from "./core/navigation/components/logo/logo.component";
 import { NavLinksComponent } from "./core/navigation/components/nav-links/nav-links.component";
+import { PrimeNGConfig } from 'primeng/api';
+
+
 
 @Component({
   selector: 'app-root',
@@ -19,6 +22,15 @@ import { NavLinksComponent } from "./core/navigation/components/nav-links/nav-li
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'front-companion';
+
+  constructor(private primengConfig: PrimeNGConfig) {}
+
+  ngOnInit() {
+      this.primengConfig.ripple = true;
+
+      
+  }
+
 }

@@ -1,0 +1,117 @@
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-2xl mx-auto">
+        <h1 class="text-2xl font-bold text-gray-900 mb-6">Create New Character</h1>
+
+        <form [formGroup]="characterForm" (ngSubmit)="onSubmit()" class="space-y-6">
+            <!-- Name -->
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">Character Name</label>
+                <input type="text" 
+                       id="name" 
+                       formControlName="name"
+                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                @if (characterForm.get('name')?.errors?.['required'] && characterForm.get('name')?.touched) {
+                    <p class="mt-1 text-sm text-red-600">Name is required</p>
+                }
+                @if (characterForm.get('name')?.errors?.['minlength'] || characterForm.get('name')?.errors?.['maxlength']) {
+                    <p class="mt-1 text-sm text-red-600">Name must be between 3 and 20 characters</p>
+                }
+            </div>
+
+            <!-- Server -->
+            <div>
+                <label for="server" class="block text-sm font-medium text-gray-700">Server</label>
+                <select id="server" 
+                        formControlName="server"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    <option value="">Select a server</option>
+                    @for (server of servers; track server) {
+                        <option [value]="server">{{ server }}</option>
+                    }
+                </select>
+                @if (characterForm.get('server')?.errors?.['required'] && characterForm.get('server')?.touched) {
+                    <p class="mt-1 text-sm text-red-600">Server is required</p>
+                }
+            </div>
+
+            <!-- Role -->
+            <div>
+                <label for="mainClass" class="block text-sm font-medium text-gray-700">Main Role</label>
+                <select id="mainClass" 
+                        formControlName="mainClass"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    <option value="">Select a role</option>
+                    @for (role of roles; track role) {
+                        <option [value]="role">{{ role }}</option>
+                    }
+                </select>
+                @if (characterForm.get('mainClass')?.errors?.['required'] && characterForm.get('mainClass')?.touched) {
+                    <p class="mt-1 text-sm text-red-600">Role is required</p>
+                }
+            </div>
+
+            <!-- Weapons -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="mainWeapon" class="block text-sm font-medium text-gray-700">Main Weapon</label>
+                    <select id="mainWeapon" 
+                            formControlName="mainWeapon"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <option value="">Select a weapon</option>
+                        @for (weapon of weapons; track weapon) {
+                            <option [value]="weapon">{{ weapon }}</option>
+                        }
+                    </select>
+                    @if (characterForm.get('mainWeapon')?.errors?.['required'] && characterForm.get('mainWeapon')?.touched) {
+                        <p class="mt-1 text-sm text-red-600">Main weapon is required</p>
+                    }
+                </div>
+
+                <div>
+                    <label for="secondaryWeapon" class="block text-sm font-medium text-gray-700">Secondary Weapon</label>
+                    <select id="secondaryWeapon" 
+                            formControlName="secondaryWeapon"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <option value="">Select a weapon</option>
+                        @for (weapon of weapons; track weapon) {
+                            <option [value]="weapon">{{ weapon }}</option>
+                        }
+                    </select>
+                    @if (characterForm.get('secondaryWeapon')?.errors?.['required'] && characterForm.get('secondaryWeapon')?.touched) {
+                        <p class="mt-1 text-sm text-red-600">Secondary weapon is required</p>
+                    }
+                </div>
+            </div>
+
+            <!-- Level -->
+            <div>
+                <label for="level" class="block text-sm font-medium text-gray-700">Level</label>
+                <input type="number" 
+                       id="level" 
+                       formControlName="level"
+                       min="1"
+                       max="60"
+                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                @if (characterForm.get('level')?.errors?.['required'] && characterForm.get('level')?.touched) {
+                    <p class="mt-1 text-sm text-red-600">Level is required</p>
+                }
+                @if (characterForm.get('level')?.errors?.['min'] || characterForm.get('level')?.errors?.['max']) {
+                    <p class="mt-1 text-sm text-red-600">Level must be between 1 and 60</p>
+                }
+            </div>
+
+            <!-- Submit -->
+            <div class="flex justify-end space-x-4">
+                <a [routerLink]="['/new-world/characters']" 
+                   class="px-4 py-2 text-gray-700 hover:text-gray-900 transition-colors duration-200">
+                    Cancel
+                </a>
+                <button type="submit"
+                        [disabled]="!characterForm.valid"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Create Character
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

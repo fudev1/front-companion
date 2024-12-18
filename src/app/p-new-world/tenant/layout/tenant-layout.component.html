@@ -1,0 +1,15 @@
+@if (company) {
+    <div class="min-h-screen">
+        <!-- Navigation -->
+        <app-tenant-nav [company]="company" [navLinks]="navLinks" [userLinks]="userLinks"  />
+        
+        <!-- Contenu principal -->
+        <main class="container px-4 py-8 mx-auto">
+            <router-outlet />
+        </main>
+    </div>
+} @else {
+    <div class="flex justify-center items-center min-h-screen">
+        <p class="text-xl text-gray-600">Loading company...</p>
+    </div>
+}

@@ -1,4 +1,91 @@
-<div class="p-10">
-    <h1 class="text-3xl">Companies</h1>
-    <p>companies NW works!</p>
+<div class="container px-4 py-8 mx-auto">
+    <div class="flex flex-col gap-8">
+        <!-- En-tête avec titre et stats -->
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-black">Companies</h1>
+            <div class="text-gray-600">
+                <span class="font-semibold">{{ companies.length }}</span> companies found
+            </div>
+        </div>
+
+        <!-- Filtres -->
+        <div class="p-4 bg-white rounded-lg shadow-md">
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+                <!-- Barre de recherche -->
+                <div class="relative">
+                    <input type="text" 
+                           [(ngModel)]="searchTerm"
+                           (ngModelChange)="applyFilters()"
+                           placeholder="Search companies..."
+                           class="px-4 py-2 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <span class="absolute top-2.5 right-3 text-gray-400">
+                        🔍
+                    </span>
+                </div>
+
+                <!-- Filtre de faction -->
+                <select [(ngModel)]="selectedFaction"
+                        (ngModelChange)="applyFilters()"
+                        class="px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <option value="all">All Factions</option>
+                    @for (faction of factions; track faction) {
+                        <option [value]="faction">{{ faction }}</option>
+                    }
+                </select>
+
+                <!-- Filtre de serveur -->
+                <select [(ngModel)]="selectedServer"
+                        (ngModelChange)="applyFilters()"
+                        class="px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <option value="all">All Servers</option>
+                    @for (server of servers; track server) {
+                        <option [value]="server">{{ server }}</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <!-- Liste des compagnies -->
+        @if (companies.length > 0) {
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                @for (company of companies; track company.id) {
+                    <div class="overflow-hidden bg-white rounded-lg shadow-lg transition-shadow duration-300 hover:shadow-xl">
+                        <!-- En-tête de la carte avec la couleur de la faction -->
+                        <div class="h-2 {{ getFactionColor(company.faction) }}"></div>
+                        
+                        <div class="p-6">
+                            <!-- Nom et Faction -->
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-xl font-bold text-black">{{ company.name }}</h2>
+                                <span class="px-3 py-1 rounded-full text-sm font-semibold {{ getFactionTextColor(company.faction) }} bg-opacity-10 {{ getFactionColor(company.faction) }}">
+                                    {{ company.faction }}
+                                </span>
+                            </div>
+
+                            <!-- Description -->
+                            <p class="mb-4 text-gray-600">{{ company.description }}</p>
+
+                            <!-- Serveur et Membres -->
+                            <div class="flex justify-between mb-4 text-sm text-gray-500">
+                                <span>Server: {{ company.server }}</span>
+                                <span>Members: {{ company.members.length }}</span>
+                            </div>
+
+                            <!-- Bouton pour voir plus -->
+                            <a [routerLink]="['/new-world/companies', company.id]" 
+                                class="block px-4 py-2 w-full text-center text-white bg-gray-800 rounded-md transition-colors duration-300 hover:bg-gray-700">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        } @else {
+            <!-- Message si aucune compagnie trouvée -->
+            <div class="flex flex-col justify-center items-center p-8 bg-white rounded-lg shadow-md">
+                <p class="mb-2 text-xl text-gray-600">oh noooooo saperlifluflute</p>
+                <p class="text-gray-500">No companies found</p>
+            </div>
+        }
+    </div>
 </div>

@@ -1,0 +1,17 @@
+@if (isLoggedIn()) {
+    <ul class="flex gap-x-4 items-center">
+        @for (link of links; track link.path) {
+            <li class="h-full">
+                <a 
+                    class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:text-gray-900 hover:bg-gray-100"
+                    [routerLink]="link.path"
+                >
+                    {{ link.label }}
+                </a>
+            </li>
+        }
+    </ul>
+}
+
+
+
