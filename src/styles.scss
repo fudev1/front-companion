@@ -3,13 +3,31 @@
 @tailwind utilities;
 
 @import './app/core/themes/variables.scss';
-@import "primeng/resources/themes/lara-light-blue/theme.css";
+// @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 
 /* Order */
 @layer reset, primeng;
 
 @layer reset {
+}
+
+
+// Surcharge globale des composants PrimeNG
+.p-button {
+	background: var(--primary) ;
+    color: #fff ;
+    padding: 10px 20px;
+    border-radius: 10px;
+	
+    
+    &:hover {
+		background: var(--accent) ;
+    }
+
+    &:focus {
+        box-shadow: none;
+    }
 }
 
 
@@ -61,20 +79,6 @@ body {
 	z-index: 9999;
     opacity: 0.015;
     filter: contrast(120%) brightness(120%);
-}
-
-
-// Surcharge globale des composants PrimeNG
-.p-button {
-  
-    
-    &:hover {
-        border-color: var(--primary-color-hover) ;
-    }
-
-    &:focus {
-        box-shadow: none;
-    }
 }
 
 
