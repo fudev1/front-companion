@@ -1,20 +1,20 @@
 <!-- <app-navbar [navLinks]="navigationThronesLiberty"></app-navbar>
 
-<main class="mx-auto mt-5 text-white border border-white max-w-7xl" >
+<main class="mx-auto mt-5 max-w-7xl text-white border border-white" >
     <p class="text-white bg-emerald-700">layout-thrones-liberty works!</p>
     <router-outlet></router-outlet>
 </main> -->
 
 <div class="flex flex-col min-h-screen theme-thrones-liberty">
-    <header class="flex p-2 shadow-md "> 
-        <app-navbar class="w-full mx-auto max-w-7xl" [navLinks]="navigationThronesLiberty"></app-navbar>
+    <header class="flex p-2 shadow-md"> 
+        <app-navbar class="mx-auto w-full max-w-7xl" [navLinks]="navigationThronesLiberty"></app-navbar>
     </header>
 
-    <section class="bg-gray-200 py-80 hero">
+    <section class="py-80 bg-gray-200 hero">
         <p class="text-center">content hero here</p>
     </section>
     
-    <main class="w-full p-2 mx-auto text-white border border-black max-w-7xl" >
+    <main class="p-2 mx-auto w-full max-w-7xl text-white border border-black" >
         <div class="text-center text-skin-secondary">
             <p class="text-white bg-emerald-700">layout-main works!</p>
             <router-outlet></router-outlet>

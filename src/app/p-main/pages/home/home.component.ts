@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 
 
@@ -14,5 +14,12 @@ import { ButtonModule } from 'primeng/button';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  @ViewChild('heroVideo') videoElement!: ElementRef<HTMLVideoElement>;
+
+  ngAfterViewInit() {
+    const video = this.videoElement.nativeElement;
+    video.currentTime = 5
+    video.muted = true;
+}
 
 }

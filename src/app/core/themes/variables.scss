@@ -1,86 +1,95 @@
 :root {
-    // Colors
-    --primary-color: #00FF87;
-    --primary-color-hover: #00cc6e;
-    --primary-text: #FFFFFF;
-    --accent: #00FF87;
-    
-    // Background
-    --bg-dark: #15171E;
-    --bg-gradient: linear-gradient(180deg, #15171E 0%, #1E2028 100%);
-    
-    // Text
-    --text-primary: #FFFFFF;
-    --text-secondary: rgba(255, 255, 255, 0.7);
-    
-    // Borders & Effects
-    --glow-effect: 0 0 20px rgba(0, 255, 135, 0.3);
-    --border-glow: 0 0 10px rgba(0, 255, 135, 0.5);
-    --border-radius: 8px;
-    
-    // Layout
-    --container-padding: 2rem;
+    // Base spacing and sizing
+    --header-height: 4rem;
     --section-spacing: 4rem;
+    --main: #141414;
+    --background: #000;
+    --color: #fff
 }
 
 .theme-main {
-    // Colors
-    --primary-color: #00FF87;
-    --primary-color-hover: #00cc6e;
-    --primary-text: #FFFFFF;
-    --accent: #00FF87;
-    
-    // Background
-    --bg-dark: #15171E;
-    --bg-gradient: linear-gradient(180deg, #15171E 0%, #1E2028 100%);
-    
-    // Text
+    // Main colors 
+    --primary: #7FFF00;     
+    --primary-light: #9FFF3D;
+    --primary-dark: #5FCC00;
+    --secondary: #00FF87;    
+    --secondary-light: #33FFA0;
+    --secondary-dark: #00CC6E;
+    --accent: #00FFE5;      
+    --accent-light: #33FFEB;
+    --accent-dark: #00CCB8;
+
+    // Text colors
     --text-primary: #FFFFFF;
-    --text-secondary: rgba(255, 255, 255, 0.7);
-    
-    // Borders & Effects
-    --glow-effect: 0 0 20px rgba(0, 255, 135, 0.3);
-    --border-glow: 0 0 10px rgba(0, 255, 135, 0.5);
-    --border-radius: 8px;
-    
-    // Components
-    --button-bg: var(--primary-color);
-    --button-hover: var(--primary-color-hover);
-    --button-text: var(--text-primary);
-    --nav-bg: rgba(21, 23, 30, 0.95);
-    --card-bg: rgba(30, 32, 40, 0.7);
+    --text-secondary: #9CA3AF;
+    --text-muted: #6B7280;
+
+    // Background colors
+    --bg-primary: #0A0F0D;     
+    --bg-secondary: #1A1F1D;
+    --bg-tertiary: #2A2F2D;
 }
 
 .theme-new-world {
-    --primary-color: #ff7700;
-    --primary-color-hover: #e66900;
-    --primary-text: #ffffff;
-    --accent: #FF4500;
-    
-    // Background
-    --bg-dark: #1A1A1A;
-    --bg-gradient: linear-gradient(180deg, #1A1A1A 0%, #2A2A2A 100%);
-    
-    // Text
+    // Main colors
+    --primary: #FF7700;        // Orange
+    --primary-light: #FF944D;
+    --primary-dark: #CC5F00;
+    --secondary: #FFD700;      // Gold
+    --secondary-light: #FFE14D;
+    --secondary-dark: #CCAC00;
+    --accent: #FF4500;         // Red-Orange
+    --accent-light: #FF704D;
+    --accent-dark: #CC3700;
+
+    // Text colors
     --text-primary: #FFFFFF;
-    --text-secondary: rgba(255, 255, 255, 0.7);
-    
-    // Borders & Effects
-    --glow-effect: 0 0 20px rgba(255, 119, 0, 0.3);
-    --border-glow: 0 0 10px rgba(255, 119, 0, 0.5);
-    --border-radius: 0;
-    
-    // Components
-    --button-bg: var(--primary-color);
-    --button-hover: var(--primary-color-hover);
-    --button-text: var(--text-primary);
-    --nav-bg: rgba(26, 26, 26, 0.95);
-    --card-bg: rgba(42, 42, 42, 0.7);
+    --text-secondary: #D1D5DB;
+    --text-muted: #9CA3AF;
+
+    // Background colors
+    --bg-primary: #1A1A1A;
+    --bg-secondary: #2A2A2A;
+    --bg-tertiary: #333333;
+
+    // Item Rarity colors 
+    --rarity-common: #c8c8c8;     // Gray
+    --rarity-uncommon: #07c02f;      // Green
+    --rarity-rare: #00cbe9;         // Blue
+    --rarity-epic: #ff16f7;        // Purple
+    --rarity-legendary: #f7a22d;   // Orange
+    --rarity-artifact: #e95d5d;     // Red
+
+    // Faction colors
+    --faction-marauders: #4CAF50;       // Green
+    --faction-syndicate: #9C27B0;       // Purple
+    --faction-covenant: #FFC107;        // Yellow/Gold
+    --faction-outpost-rush: #FF5722;    // Orange-Red
+    --faction-corrupted: #F44336;       // Red
+    --faction-ancient: #FFB74D;         // Light Orange
+    --faction-lost: #795548;            // Brown
+    --faction-angry-earth: #8BC34A;     // Light Green
 }
 
 .theme-thrones-liberty {
-    --primary-color: #9c27b0;
-    --primary-color-hover: #8a229b;
-    --primary-text: #ffffff;
-    --accent: #8a229b;
+    // Main colors
+    --primary: #7B2FBF;       
+    --primary-light: #9B5FDF;
+    --primary-dark: #5B1F8F;
+    --secondary: #FFD700;    
+    --secondary-light: #FFE14D;
+    --secondary-dark: #CCAC00;
+    --accent: #00B4D8;         
+    --accent-light: #33C5E2;
+    --accent-dark: #0090AD;
+
+    // Text colors
+    --text-primary: #FFFFFF;
+    --text-secondary: #9CA3AF;
+    --text-muted: #6B7280;
+
+    // Background colors
+    --bg-primary: #1A1A2E;     // Dark Blue-tinted
+    --bg-secondary: #2A2A3E;
+    --bg-tertiary: #3A3A4E;
 }

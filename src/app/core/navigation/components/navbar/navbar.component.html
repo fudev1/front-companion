@@ -1,15 +1,32 @@
-<nav class="navbar" [class.translate-y-0]="navbarService.navbarVisible$ | async"
-     [class.translate-y-[-100%]]="!(navbarService.navbarVisible$ | async)">
-  <div class="navbar-container">
-    <div class="navbar-content">
-      <div class="navbar-items">
-        <app-logo></app-logo>
-        <app-nav-links [links]="navLinks"></app-nav-links>
-        <div class="navbar-actions">
-          <app-user-links [links]="userLinks"></app-user-links>
-          <app-login-button></app-login-button>
-        </div>
-      </div>
-    </div>
-  </div>
+<nav 
+	class="container px-5 mx-auto my-5 rounded-lg transition-all ease-out navbar bg-skin-main" 
+	[class.translate-y-0]="navbarService.navbarVisible$ | async" 
+	[class.translate-y-[-100%]]="!(navbarService.navbarVisible$ | async)"
+	[class.navbar-scrolled]="navbarService.hasScrolled$ | async"
+>
+
+	<div class="navbar-container">
+		<div class="navbar-content">
+			<div class="navbar-items">
+
+				<div class="flex navbar-main">
+
+					<app-logo class="mr-4"></app-logo>
+
+					<app-nav-links [links]="navLinks"></app-nav-links>
+
+				</div>
+
+				
+				<div class="navbar-actions">
+
+					<app-user-links [links]="userLinks"></app-user-links>
+				
+					<app-login-button></app-login-button>
+				
+				</div>
+				
+			</div>
+		</div>
+	</div>
 </nav>

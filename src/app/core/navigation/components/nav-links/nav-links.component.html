@@ -1,7 +1,7 @@
-<ul class="items-center hidden h-full md:flex gap-x-4"> 
+<ul class="hidden gap-x-4 items-center h-full md:flex"> 
     @for (link of links; track link.path){
-        <li class="h-full ">
-            <a class="transition-colors flex items-center h-full px-4 border hover:bg-skin-primary hover:border-skin-secondary bg-skin-accent " [routerLink]="link.path">
+        <li class="h-full">
+            <a pRipple class="flex items-center px-4 h-full text-white rounded-lg transition-colors hover:bg-skin-primary hover:border-skin-secondary" [routerLink]="link.path">
                 {{ link.label }}
             </a>
         </li>

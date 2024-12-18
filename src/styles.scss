@@ -2,35 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './app/core/themes/variables.scss';
+@import "primeng/resources/primeng.css";
+
 /* Order */
 @layer reset, primeng;
 
 @layer reset {
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        min-height: 100vh;
-    }
 }
 
-@import './app/core/themes/variables.scss';
-@import "primeng/resources/primeng.css";
+
+@layer base {
+	@font-face {
+		font-family: 'circular-web';
+		src: url('./assets/fonts/circularweb-book.woff2') format('woff2');
+	}
+
+	@font-face {
+		font-family: 'general';
+		src: url(./assets/fonts/general.woff2) format('woff2');
+	}
+
+	@font-face {
+		font-family: 'robert-medium';
+		src: url(./assets/fonts/robert-medium.woff2) format('woff2');
+	}
+
+	@font-face {
+		font-family: 'robert-regular';
+		src: url(./assets/fonts/robert-regular.woff2) format('woff2');
+	}
+
+	@font-face {
+		font-family: 'gm-regular';
+		src: url(./assets/fonts/gm-regular.woff2) format('woff2');
+	}
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	min-height: 100vh;
+	background: var(--background);
+	color: var(--color);
+	font-family: 'general', sans-serif;
+}
+
+
+.background-pattern {
+    @apply fixed inset-0 pointer-events-none z-0;
+    background-image: url('./assets/images/noise-color.png');
+    background-repeat: repeat;
+	z-index: 9999;
+    opacity: 0.015;
+    filter: contrast(120%) brightness(120%);
+}
+
 
 // Surcharge globale des composants PrimeNG
 .p-button {
-    background: var(--primary-color) ;
-    border-color: var(--primary-color) ;
-    color: var(--primary-text) ;
-    padding: 20px 40px;
-    border-radius: 20px;
-    
+  
     
     &:hover {
-        background: var(--primary-color-hover) ;
         border-color: var(--primary-color-hover) ;
     }
 
@@ -41,28 +78,221 @@
 
 
 .navbar {
-    @apply fixed top-0 right-0 left-0 z-50 w-full;
-    @apply transition-transform duration-300;
-    background: var(--nav-bg);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
+    @apply fixed top-0 right-0 left-0 z-50 w-full transition-transform duration-300;
+	background-color: transparent;
+}
+
+.navbar-scrolled {
+	background-color: rgba(0, 0, 0, .6);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+}
   
-  .navbar-container {
+.navbar-container {
     @apply p-2;
-  }
+}
   
-  .navbar-content {
+.navbar-content {
     @apply mx-auto max-w-7xl;
-  }
+}
   
-  .navbar-items {
+.navbar-items {
     @apply flex justify-between items-center;
-  }
+}
   
-  .navbar-actions {
+.navbar-actions {
     @apply flex items-center space-x-4;
-  }
+}
+
+
+
+.hero-main {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    .hero-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translateX(-50%) translateY(-50%);
+        z-index: -2;
+        object-fit: cover;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to bottom,
+            rgb(255 129 40 / 30%) 0%,
+            rgb(17 47 44 / 91%) 100%
+        );
+        z-index: -1;
+    }
+
+    h2 {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+.home-nw {
+
+	.card {
+		align-items: flex-end;
+		aspect-ratio: .6666;
+		display: flex;
+		justify-content: center;
+		padding: 0 30px;
+		// perspective: 2500px;
+		position: relative;
+		width: 100%;
+		z-index: 1;
+	}
+
+	.card:hover {
+		z-index: 2;
+	}
+
+	.card:hover .wrapper {
+		border-radius: 1rem;
+		box-shadow: 2px 35px 32px -8px #000000bf;
+		-webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, .75);
+		-moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, .75);
+		transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+	}
+
+	.card:hover .wrapper:before, .wrapper:after {
+		opacity: 1;
+	}
+
+	.card:hover .wrapper:after {
+		height: 120px;
+	}
+
+	.card:hover .title {
+		transform: translate3d(0, -50px, 100px);
+	}
+
+	.card:hover .character {
+		opacity: 1;
+		transform: translate3d(0, -15%, 100px);
+	}
+
+	.character {
+		filter: drop-shadow(0 0 10px rgba(0, 0, 0, .25));
+		opacity: 0;
+		position: absolute;
+		transition: all .5s;
+		width: 100%;
+		z-index: -1;
+	}
+
+	.wrapper {
+        position: absolute;
+        transition: all .5s;
+        width: 100%;
+        z-index: -1;
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 100%;
+        }
+
+        &:before {
+            background: linear-gradient(
+                180deg,
+                rgb(42 131 59 / 30%) 0%,
+                rgb(255 96 0 / 63%) 100%
+            );
+            height: 100%;
+            top: 0;
+            border-radius: 1rem;
+            z-index: 1;
+        }
+
+        &:after {
+            background: linear-gradient(
+                180deg,
+                transparent 46%, 
+				rgb(119 121 41) 100%, 
+				rgb(255 105 0 / 95%) 100%
+            );
+            height: 100%;
+            bottom: 0;
+            border-radius: 1rem;
+            z-index: 2;
+            opacity: 1;
+            transition: all .5s;
+        }
+    }
+
+
+	.title{
+		filter: drop-shadow(0 2px 6px rgb(0, 0, 0));
+		margin-bottom: 20px;
+		transition: transform .5s;
+		width: 100%;
+	}
+
+
+	.cover-image {
+		border-radius: 1rem;
+		height: 100%;
+		-o-object-fit: cover;
+		object-fit: cover;
+		width: 100%;
+	}
+
+}
+
+.footer {
+    @apply py-8 mt-auto bg-skin-bg-primary;
+
+    .footer-container {
+        @apply container px-5 mx-auto;
+    }
+
+    .footer-main {
+        @apply flex flex-col gap-8 py-8 md:flex-row md:justify-between;
+    }
+
+    .footer-links {
+        @apply grid grid-cols-1 gap-8 md:grid-cols-3;
+    }
+
+    .footer-links-list {
+        @apply flex flex-col gap-4;
+    }
+
+    .footer-link {
+        @apply text-sm text-gray-400 transition-colors duration-200 hover:text-white;
+    }
+
+    .footer-apps {
+        @apply flex gap-4;
+
+        .footer-apps-button {
+            @apply h-12 transition-opacity duration-200 hover:opacity-80;
+        }
+    }
+
+    .footer-copy {
+        @apply pt-8 text-sm text-center text-gray-500 border-t border-gray-800;
+    }
+}
+
+
 
 /* Faction Colors */
 .bg-marauders {
@@ -76,3 +306,5 @@
 .bg-covenant {
     background-color: rgba(202, 138, 4, 0.95); // Yellow-600 avec transparence
 }
+
+

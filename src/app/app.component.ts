@@ -18,6 +18,7 @@ import { PrimeNGConfig } from 'primeng/api';
     LoginButtonComponent,
     LogoComponent,
     NavLinksComponent,
+    
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

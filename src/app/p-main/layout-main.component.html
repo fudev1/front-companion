@@ -1,64 +1,12 @@
 <div class="flex flex-col min-h-screen theme-main">
-    <!-- Header avec navbar -->
-    <app-navbar [navLinks]="navigationMain"></app-navbar>
+    <header class="flex p-2 shadow-md"> 
+        <app-navbar class="mx-auto w-full max-w-7xl" [navLinks]="navigationMain"></app-navbar>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="flex relative items-center min-h-screen hero" style="background: var(--bg-gradient)">
-        <!-- Particules en arrière-plan -->
-        <div class="absolute inset-0 particles"></div>
-        
-        <!-- Contenu Hero -->
-        <div class="container flex flex-wrap items-center px-4 mx-auto">
-            <!-- Texte à gauche -->
-            <div class="z-10 space-y-6 w-full text-white lg:w-1/2">
-                <div class="inline-block px-4 py-2 mb-4 text-sm rounded-full live-gaming" 
-                     style="background: rgba(0, 255, 135, 0.1); border: 1px solid var(--primary-color)">
-                    LIVE GAMING
-                </div>
-                
-                <h1 class="mb-4 text-6xl font-bold steaming-text">
-                    STEAMING
-                </h1>
-                
-                <p class="mb-8 text-xl" style="color: var(--text-secondary)">
-                    VIDEO GAMES ONLINE
-                </p>
-                
-                <button class="px-8 py-3 font-semibold text-black rounded-full transition-all contact-btn"
-                        style="background: var(--primary-color); box-shadow: var(--glow-effect)">
-                    CONTACT US
-                </button>
-            </div>
-            
-            <!-- Image à droite -->
-            <div class="relative z-10 mt-12 w-full lg:w-1/2 lg:mt-0">
-                <div class="relative hero-image-container">
-                    <!-- L'image sera ajoutée en CSS pour un meilleur contrôle -->
-                </div>
-            </div>
-        </div>
 
-        <!-- Courbe décorative en bas -->
-        <div class="absolute right-0 bottom-0 left-0 wave-decoration">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full">
-                <path fill="var(--primary-color)" fill-opacity="0.2" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
-        </div>
-    </section>
+    <router-outlet></router-outlet>
 
-    <!-- Contenu Principal -->
-    <div class="relative min-h-screen">
-        <!-- Navbar -->
-        <app-navbar [navLinks]="navigationMain"></app-navbar>
 
-        <!-- Main Content avec padding pour compenser la navbar fixe -->
-        <main class="pt-16">
-            <router-outlet></router-outlet>
-        </main>
-    </div>
-
-    <!-- Footer -->
-    <footer class="py-8 text-center" style="background: var(--bg-dark)">
-        <p style="color: var(--text-secondary)"> 2024 NW Companion. All rights reserved.</p>
-    </footer>
 </div>
+
+<app-footer></app-footer>
