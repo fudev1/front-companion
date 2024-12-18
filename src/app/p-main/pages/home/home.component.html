@@ -1,7 +1,6 @@
 <!-- <section class="py-80 mx-5 mt-20 bg-gray-200 rounded-2xl hero hero-main">
     <h2 class="text-4xl text-center">Guild Master</h2>
 </section> -->
-
 <section class="py-80 mx-5 mt-20 rounded-2xl hero hero-main">
     <video #heroVideo autoplay muted loop playsinline class="hero-video">
         <source src="assets/videos/nw-ba-hero-01.mp4" type="video/mp4">
@@ -10,34 +9,41 @@
 </section>
 
 <main class="container p-2 m-20 mx-auto text-white home-nw" >
-    <section class="flex flex-col gap-3 pt-16 text-center">
-        <div>
+    <section class="flex flex-col gap-3 mt-20 text-center">
+        <div class="mb-10">
             <span class="text-sm">GuildMaster</span>
             <h3 class="text-2xl font-bold md:text-5xl">Choose your Game</h3>  
         </div>
 
         <div class="grid grid-cols-2 gap-3 md:grid-cols-4 md:pt-8">
-            <div class="p-8 card">
-                <div class="wrapper">
-                    <img src="https://cdn.questlog.gg/core/games/blue-protocol.webp" class="cover-image" draggable="false" data-v-33736fa1="">
+            
+            <a [routerLink]="['/thrones-liberty']">
+                <div class="p-8 card">
+                    <div class="wrapper">
+                        <img src="https://cdn.questlog.gg/core/games/throne-and-liberty.webp" class="cover-image" draggable="false" data-v-33736fa1="">
+                    </div>
+                    <div class="title">
+                        <img src="https://cdn.questlog.gg/core/games/throne-and-liberty_logo.webp" alt="Blue Protocol logo" loading="eager" draggable="false" data-v-33736fa1="">
+                    </div>
+                    <img src="https://cdn.questlog.gg/core/games/throne-and-liberty_character.webp" class="character" draggable="false" alt="Blue Protocol character" data-v-33736fa1="">
                 </div>
-                <div class="title">
-                    <img src="https://cdn.questlog.gg/core/games/blue-protocol_logo.webp" alt="Blue Protocol logo" loading="eager" draggable="false" data-v-33736fa1="">
-                </div>
-                <img src="https://cdn.questlog.gg/core/games/blue-protocol_character.webp" class="character" draggable="false" alt="Blue Protocol character" data-v-33736fa1="">
-            </div>
+            </a>
 
-            <div class="p-8 card">
-                <div class="wrapper">
-                    <img src="https://cdn.questlog.gg/core/games/throne-and-liberty.webp" class="cover-image" draggable="false" data-v-33736fa1="">
-                </div>
-                <div class="title">
-                    <img src="https://cdn.questlog.gg/core/games/blue-protocol_logo.webp" alt="Blue Protocol logo" loading="eager" draggable="false" data-v-33736fa1="">
-                </div>
-                <img src="https://cdn.questlog.gg/core/games/throne-and-liberty_character.webp" class="character" draggable="false" alt="Blue Protocol character" data-v-33736fa1="">
-            </div>
 
-            <div class="p-8 card">
+            <a [routerLink]="['/new-world']">
+                <div class="p-8 card">
+                    <div class="wrapper">
+                        <img src="./assets/images/nw-card.jpg" class="cover-image" draggable="false" data-v-33736fa1="">
+                    </div>
+                    <div class="title">
+                        <img src="./assets/images/nw-card-logo.png" alt="Blue Protocol logo" loading="eager" draggable="false" data-v-33736fa1="">
+                    </div>
+                    <img src="./assets/images/nw-card-character.png" class="character" draggable="false" alt="Blue Protocol character" data-v-33736fa1="">
+                </div>
+            </a>
+
+
+            <!-- <div class="p-8 card">
                 <div class="wrapper">
                     <img src="https://www.breakflip.com/uploads2/Andrallia/new-world/new-world-date-sortie-ps4-ps5.jpg" class="cover-image" draggable="false" data-v-33736fa1="">
                 </div>
@@ -45,9 +51,23 @@
                     <img src="https://cdn.questlog.gg/core/games/blue-protocol_logo.webp" alt="Blue Protocol logo" loading="eager" draggable="false" data-v-33736fa1="">
                 </div>
                 <img src="https://cdn.questlog.gg/core/games/blue-protocol_character.webp" class="character" draggable="false" alt="Blue Protocol character" data-v-33736fa1="">
-            </div>
+            </div> -->
 
-            <div class="p-8 card">
+            <a [routerLink]="['/new-world']">
+
+                <div class="p-8 card">
+                    <div class="wrapper">
+                        <img src="https://cdn.questlog.gg/core/games/blue-protocol.webp" class="cover-image" draggable="false" data-v-33736fa1="">
+                    </div>
+                    <div class="title">
+                        <img src="https://cdn.questlog.gg/core/games/blue-protocol_logo.webp" alt="Blue Protocol logo" loading="eager" draggable="false" data-v-33736fa1="">
+                    </div>
+                    <img src="https://cdn.questlog.gg/core/games/blue-protocol_character.webp" class="character" draggable="false" alt="Blue Protocol character" data-v-33736fa1="">
+                </div>
+            </a>
+
+            
+            <div class="p-8 card disabled">
                 <div class="wrapper">
                     <img src="https://cdn.questlog.gg/core/games/blue-protocol.webp" class="cover-image" draggable="false" data-v-33736fa1="">
                 </div>
@@ -55,6 +75,9 @@
                     <img src="https://cdn.questlog.gg/core/games/blue-protocol_logo.webp" alt="Blue Protocol logo" loading="eager" draggable="false" data-v-33736fa1="">
                 </div>
                 <img src="https://cdn.questlog.gg/core/games/blue-protocol_character.webp" class="character" draggable="false" alt="Blue Protocol character" data-v-33736fa1="">
+                <div class="disabled-overlay">
+                    <span class="coming-soon">Coming Soon</span>
+                </div>
             </div>
 
     
@@ -66,7 +89,7 @@
     </section>
 
 
-    <section class="container px-4 py-16 mx-auto text-white">
+    <section class="container px-4 py-16 mx-auto mt-40 text-white">
         <div class="mb-14 text-center">
             <span class="text-sm text-gray-400">Fonctionnalités</span>
             <h2 class="text-3xl font-bold md:text-4xl">Gérez votre guilde efficacement</h2>

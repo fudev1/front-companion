@@ -1,0 +1,159 @@
+<section class="bg-slate-400 h-[600px] items-center flex justify-center">
+    <span class="px-6 text-sm font-thin rounded-md bg-slate-950">IMG CHARACTERS HERO</span>
+</section>
+
+<section class="p-2 mx-auto max-w-7xl">
+    <div class="p-10">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-3xl font-bold">Mes personnages</h1>
+            <button (click)="openCreateModal()" 
+                    class="px-4 py-2 text-white bg-blue-600 rounded-md transition-colors duration-200 hover:bg-blue-700">
+                Créer un personnage
+            </button>
+        </div>
+
+        @if (characters.length === 0) {
+            <div class="p-8 text-center rounded-lg bg-skin-bg-secondary">
+                <p class="mb-4 text-xl text-gray-400">Vous n'avez pas encore créé de personnage</p>
+                <button (click)="openCreateModal()" 
+                        class="px-6 py-3 text-white rounded-lg bg-skin-accent hover:bg-skin-accent/80">
+                    Créer un personnage
+                </button>
+            </div>
+        } @else {
+            <div class="overflow-hidden bg-white rounded-lg shadow-md">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase">Nom</th>
+                            <th class="px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase">Serveur</th>
+                            <th class="px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase">Classe</th>
+                            <th class="px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase">Armes</th>
+                            <th class="px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase">Niveau</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @for (character of characters; track character.id) {
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap">{{ character.name }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ character.server }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ character.mainClass }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ character.mainWeapon }} / {{ character.secondaryWeapon }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ character.level }}</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</section>
+
+<!-- Modal de création -->
+<p-dialog 
+    [(visible)]="showCreateModal" 
+    [modal]="true" 
+    [draggable]="false" 
+    [resizable]="false"
+    styleClass="w-full max-w-lg"
+    [header]="'Créer un personnage'">
+    
+    <form [formGroup]="characterForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
+            <label for="name" class="text-sm font-medium text-gray-700">Nom du personnage</label>
+            <input 
+                id="name"
+                type="text" 
+                formControlName="name"
+                class="px-4 py-2 rounded-lg border focus:ring-blue-500 focus:border-blue-500"
+            >
+        </div>
+
+        <div class="flex flex-col gap-2">
+            <label for="server" class="text-sm font-medium text-gray-700">Serveur</label>
+            <select 
+                id="server"
+                formControlName="server"
+                class="px-4 py-2 rounded-lg border focus:ring-blue-500 focus:border-blue-500"
+            >
+                <option value="Asgard">Asgard</option>
+                <option value="Abaton">Abaton</option>
+                <option value="Dry Tree">Dry Tree</option>
+            </select>
+        </div>
+
+        <div class="flex flex-col gap-2">
+            <label for="mainClass" class="text-sm font-medium text-gray-700">Classe principale</label>
+            <select 
+                id="mainClass"
+                formControlName="mainClass"
+                class="px-4 py-2 rounded-lg border focus:ring-blue-500 focus:border-blue-500"
+            >
+                <option value="DPS">DPS</option>
+                <option value="Tank">Tank</option>
+                <option value="Healer">Healer</option>
+            </select>
+        </div>
+
+        <div class="flex flex-col gap-2">
+            <label for="mainWeapon" class="text-sm font-medium text-gray-700">Arme principale</label>
+            <select 
+                id="mainWeapon"
+                formControlName="mainWeapon"
+                class="px-4 py-2 rounded-lg border focus:ring-blue-500 focus:border-blue-500"
+            >
+                <option value="Sword & Shield">Sword & Shield</option>
+                <option value="Life Staff">Life Staff</option>
+                <option value="Fire Staff">Fire Staff</option>
+                <option value="Ice Gauntlet">Ice Gauntlet</option>
+                <option value="Hatchet">Hatchet</option>
+                <option value="Rapier">Rapier</option>
+            </select>
+        </div>
+
+        <div class="flex flex-col gap-2">
+            <label for="secondaryWeapon" class="text-sm font-medium text-gray-700">Arme secondaire</label>
+            <select 
+                id="secondaryWeapon"
+                formControlName="secondaryWeapon"
+                class="px-4 py-2 rounded-lg border focus:ring-blue-500 focus:border-blue-500"
+            >
+                <option value="Sword & Shield">Sword & Shield</option>
+                <option value="Life Staff">Life Staff</option>
+                <option value="Fire Staff">Fire Staff</option>
+                <option value="Ice Gauntlet">Ice Gauntlet</option>
+                <option value="Hatchet">Hatchet</option>
+                <option value="Rapier">Rapier</option>
+            </select>
+        </div>
+
+        <div class="flex flex-col gap-2">
+            <label for="level" class="text-sm font-medium text-gray-700">Niveau</label>
+            <input 
+                id="level"
+                type="number" 
+                formControlName="level"
+                min="1"
+                max="60"
+                class="px-4 py-2 rounded-lg border focus:ring-blue-500 focus:border-blue-500"
+            >
+        </div>
+
+        <div class="flex gap-4 justify-end mt-4">
+            <button 
+                type="button" 
+                (click)="showCreateModal = false"
+                class="px-4 py-2 text-gray-700 rounded-lg border hover:bg-gray-50"
+            >
+                Annuler
+            </button>
+            <button 
+                type="submit"
+                class="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+                [disabled]="!characterForm.valid"
+            >
+                Créer
+            </button>
+        </div>
+    </form>
+</p-dialog>

@@ -15,10 +15,9 @@ import { HomeThronesLibertyComponent } from './p-thrones-liberty/pages/home-thro
 import { LoginComponent } from './core/auth/login/login.component';
 import { TenantLayoutComponent } from './p-new-world/tenant/layout/tenant-layout.component';
 import { OverviewComponent } from './p-new-world/tenant/pages/overview/overview.component';
-import { CharacterListComponent } from './p-new-world/pages/characters/list/character-list.component';
-import { CharacterCreateComponent } from './p-new-world/pages/characters/create/character-create.component';
 import { AuthRequiredComponent } from './core/auth/components/auth-required/auth-required.component';
 import { authGuard } from './core/auth/guards/auth.guard';
+import { CharactersNewWorldComponent } from './p-new-world/pages/characters-new-world/characters-new-world.component';
 
 export const routes: Routes = [
     {
@@ -43,14 +42,10 @@ export const routes: Routes = [
             { path: 'forum', component: ForumNewWorldComponent },
             { 
                 path: 'characters', 
-                component: CharacterListComponent,
+                component: CharactersNewWorldComponent,
                 canActivate: [authGuard]
             },
-            { 
-                path: 'characters/new', 
-                component: CharacterCreateComponent,
-                canActivate: [authGuard]
-            }
+
         ]
     },
 

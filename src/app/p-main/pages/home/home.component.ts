@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 
 
@@ -8,7 +9,8 @@ import { ButtonModule } from 'primeng/button';
   selector: 'app-home',
   standalone: true,
   imports: [
-    ButtonModule
+    ButtonModule,
+    RouterLink
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

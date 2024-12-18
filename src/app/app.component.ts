@@ -5,7 +5,7 @@ import { LoginButtonComponent } from './core/navigation/components/login-button/
 import { LogoComponent } from "./core/navigation/components/logo/logo.component";
 import { NavLinksComponent } from "./core/navigation/components/nav-links/nav-links.component";
 import { PrimeNGConfig } from 'primeng/api';
-
+import { ScrollService } from './core/services/scroll.service';
 
 
 @Component({
@@ -14,19 +14,20 @@ import { PrimeNGConfig } from 'primeng/api';
   imports: [
     RouterOutlet,
     NavbarComponent,
-    NavbarComponent,
     LoginButtonComponent,
     LogoComponent,
-    NavLinksComponent,
-    
-],
+    NavLinksComponent
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   title = 'front-companion';
 
-  constructor(private primengConfig: PrimeNGConfig) {}
+  constructor(
+    private primengConfig: PrimeNGConfig,
+    private scrollService: ScrollService
+  ) {}
 
   ngOnInit() {
       this.primengConfig.ripple = true;

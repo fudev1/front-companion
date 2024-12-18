@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import './app/core/themes/variables.scss';
+@import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 
 /* Order */
@@ -281,10 +282,10 @@ body {
 }
 
 .footer {
-    @apply py-8 mt-auto bg-skin-bg-primary;
+    @apply py-8  bg-skin-bg-primary mt-20;
 
     .footer-container {
-        @apply container px-5 mx-auto;
+        @apply w-full px-5 mx-auto;
     }
 
     .footer-main {
