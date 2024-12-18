@@ -2,7 +2,11 @@
     @for (link of links; track link.path){
         <li class="h-full">
             <a pRipple class="flex items-center px-4 h-full text-white rounded-lg transition-colors hover:bg-skin-primary hover:border-skin-secondary" [routerLink]="link.path">
-                {{ link.label }}
+                @if (link.isLogo) {
+                    <img [src]="link.imagePath" [alt]="link.label" class="h-8">
+                } @else {
+                    {{ link.label }}
+                }
             </a>
         </li>
     }

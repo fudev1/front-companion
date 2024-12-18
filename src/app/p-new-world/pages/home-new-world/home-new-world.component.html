@@ -1,18 +1,93 @@
 
-<section class="bg-slate-400 h-[600px] items-center flex justify-center">
-    <span class="px-6 text-sm font-thin rounded-md bg-slate-950">IMG HERO</span>
-</section>
 
-<section class="p-2 mx-auto max-w-7xl">
-    
-    <div class="p-10">
-        <h1 class="text-3xl">Home NW</h1>
-        <p>home nw works!</p>
-    </div>   
 
-    <div class="flex card justify-content-center">
-        <p-button label="Submit" class="custom-button" />
+<section class="relative h-[600px] flex items-center justify-center hero-section" style="background-image: url(./assets/images/nw-hero-section-03.webp);">
+    <div class="relative z-10 text-center text-white">
+        <h1 class="mb-4 text-5xl font-bold font-gm-main">New World</h1>
+        <p class="mb-8 text-xl">Guild Master</p>
+        
     </div>
-    
-
 </section>
+
+
+<main class="container p-2 mx-auto w-full text-white border border-black" >
+
+
+    <section class="py-20 bg-gradient-to-r from-purple-900 to-purple-800">
+        <div class="container grid gap-8 px-4 mx-auto md:grid-cols-2">
+            <div class="flex flex-col justify-center">
+                <h2 class="mb-6 text-4xl font-bold font-gm-main">CRÉER VOTRE COMPAGNIE</h2>
+                <p class="mb-8 text-xl text-gray-300">Inscrivez vous gratuitement et maîtrisez la coordination des membres, l'organisation d'événements et la gestion de votre compagnie</p>
+                <div>
+                    <button class="px-8 py-3 text-lg font-semibold rounded-lg transition-colors bg-skin-accent hover:bg-skin-accent/80">
+                        CRÉER
+                    </button>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="assets/images/nw-company-preview.webp" alt="Aperçu compagnie" class="object-cover w-full rounded-lg shadow-xl">
+            </div>
+        </div>
+    </section>
+
+
+     <!-- Section Top 5 Compagnies -->
+     <section class="py-20">
+        <div class="container px-4 mx-auto">
+            <h2 class="mb-12 text-3xl font-bold text-center font-gm-main">TOP 5 COMPAGNIES</h2>
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-5">
+                @for (i of [1,2,3,4,5]; track i) {
+                    <div class="overflow-hidden rounded-lg transition-transform bg-skin-bg-secondary hover:-translate-y-1">
+                        <img src="assets/images/company-{{i}}.webp" alt="Company {{i}}" class="object-cover w-full h-48">
+                        <div class="p-4">
+                            <h3 class="mb-2 text-xl font-bold">Compagnie {{i}}</h3>
+                            <p class="text-sm text-gray-400">Serveur: EU Central</p>
+                            <p class="text-sm text-gray-400">Membres: {{100 + i * 20}}</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Section Features -->
+    <section class="py-20 bg-skin-bg-secondary">
+        <div class="container px-4 mx-auto">
+            <h2 class="mb-12 text-3xl font-bold text-center font-gm-main">FONCTIONNALITÉS DE GESTION</h2>
+            <div class="grid gap-8 md:grid-cols-3">
+                <!-- Feature 1 -->
+                <div class="p-6 rounded-lg bg-skin-bg-primary">
+                    <div class="mb-4 text-4xl text-skin-accent">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="mb-3 text-xl font-bold">Gestion des Membres</h3>
+                    <p class="text-gray-400">Gérez les rôles, les permissions et suivez l'activité de vos membres en temps réel.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="p-6 rounded-lg bg-skin-bg-primary">
+                    <div class="mb-4 text-4xl text-skin-accent">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3 class="mb-3 text-xl font-bold">Planification de Guerre</h3>
+                    <p class="text-gray-400">Organisez vos guerres de territoire et gérez les rotations d'équipes efficacement.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="p-6 rounded-lg bg-skin-bg-primary">
+                    <div class="mb-4 text-4xl text-skin-accent">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="mb-3 text-xl font-bold">Statistiques & Analyses</h3>
+                    <p class="text-gray-400">Suivez les performances de votre compagnie avec des tableaux de bord détaillés.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</main>
+
+
+
+

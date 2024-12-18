@@ -9,7 +9,7 @@ export const NAV_LINKS_MAIN: NavLinks[] = [
 ];
 
 export const NAV_LINKS_NEW_WORLD: NavLinks[] = [
-    { path: '/new-world', label: 'Logo NW' },
+    { path: '/new-world', label: 'Logo NW', isLogo: true, imagePath: './assets/images/logo-nw.svg' },
     { path: '/new-world/companies', label: 'Companies', icon: 'building'},
     { path: '/new-world/wars', label: 'Wars', icon: 'sword'},
     { path: '/new-world/servers', label: 'Servers', icon: 'server'},
@@ -40,7 +40,7 @@ export const COMPANY_LINKS_NEW_WORLD = (companyId: number): NavLinks[] => [
 ];
 
 export const NAV_LINKS_THRONES_LIBERTY: NavLinks[] = [
-    { path: '/thrones-liberty', label: 'LOGO TL' },
+    { path: '/thrones-liberty', label: 'LOGO TL', isLogo: true, imagePath: './assets/images/logo-tl.webp' },
     { path: '/thrones-liberty/guilds', label: 'Guilds'},
     { path: '/thrones-liberty/events', label: 'Events'},
     { path: '/thrones-liberty/auctions', label: 'Auctions'},
