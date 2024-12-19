@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @import './app/core/themes/variables.scss';
-// @import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/themes/lara-dark-blue/theme.css";
 @import "primeng/resources/primeng.css";
 
 /* Order */
@@ -28,6 +28,19 @@
     &:focus {
         box-shadow: none;
     }
+}
+
+
+
+.p-dialog-content {
+	background-color: #131313;
+	padding: 20px;
+}
+
+.p-dialog-header {
+	background-color: #131313;
+	padding: 20px;
+	border-bottom: 1px solid #2e2e2e
 }
 
 

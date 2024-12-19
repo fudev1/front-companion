@@ -4,6 +4,10 @@ import { DialogModule } from 'primeng/dialog';
 import { Character } from '../../models/character.model';
 import { mockCharacters } from '../../data/characters.mock';
 import { ButtonModule } from 'primeng/button';
+import { Ripple } from 'primeng/ripple';
+import { Build } from '../../models/build.model';
+import { mockBuilds } from '../../data/builds.mock';
+import { NgClass } from '@angular/common';
 
 @Component({
 	selector: 'app-characters-new-world',
@@ -12,6 +16,8 @@ import { ButtonModule } from 'primeng/button';
 		ReactiveFormsModule, 
 		DialogModule,
 		ButtonModule,
+		Ripple,
+		NgClass
 	],
 	templateUrl: './characters-new-world.component.html',
 	styleUrl: './characters-new-world.component.scss'
@@ -21,6 +27,9 @@ export class CharactersNewWorldComponent implements OnInit {
 	characters: Character[] = [];
 	showCreateModal = false;
 	characterForm: FormGroup;
+	selectedCharacter: Character | null = null;
+	characterBuilds: Build[] = [];
+	selectedBuild: Build | null = null;
 
 	constructor(private fb: FormBuilder) {
 		this.characterForm = this.fb.group({
@@ -57,5 +66,16 @@ export class CharactersNewWorldComponent implements OnInit {
 			this.showCreateModal = false;
 			this.characterForm.reset();
 		}
+	}
+
+	onSelectCharacter(character: Character) {
+		this.selectedCharacter = character;
+		this.selectedBuild = null;
+		// Filtrer les builds pour ce personnage
+		this.characterBuilds = mockBuilds.filter(build => build.characterId === character.id);
+	}
+
+	onSelectBuild(build: Build) {
+		this.selectedBuild = build;
 	}
 }

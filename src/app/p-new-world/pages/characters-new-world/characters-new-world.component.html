@@ -34,9 +34,11 @@
                             <th class="px-6 py-3 text-xs font-medium text-left text-gray-500 uppercase">Niveau</th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
+                    <tbody class="text-black bg-white divide-y divide-gray-200">
                         @for (character of characters; track character.id) {
-                            <tr class="hover:bg-gray-50">
+                            <tr class="cursor-pointer hover:bg-gray-50" 
+                                (click)="onSelectCharacter(character)"
+                                [class.bg-blue-50]="selectedCharacter?.id === character.id">
                                 <td class="px-6 py-4 whitespace-nowrap">{{ character.name }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ character.server }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ character.mainClass }}</td>
@@ -51,8 +53,173 @@
     </div>
 </section>
 
-<!-- Modal de création -->
-<!-- <p-dialog 
+<!-- Détail du personnage -->
+@if (selectedCharacter) {
+    <section class="p-2 mx-auto max-w-7xl">
+        <div class="p-10">
+            <!-- Container en 3 parties -->
+            <div class="grid grid-cols-3 gap-6 mb-8">
+                <!-- Photo du personnage -->
+                <div class="p-6 rounded-lg bg-slate-800">
+                    <div class="flex justify-center items-center rounded-lg aspect-square bg-slate-700">
+                        <span class="text-sm text-neutral-400">Photo du personnage</span>
+                    </div>
+                </div>
+
+                <!-- Informations générales -->
+                <div class="p-6 rounded-lg bg-slate-800">
+                    <h2 class="mb-4 text-2xl font-bold">{{ selectedCharacter.name }}</h2>
+                    <div class="space-y-2">
+                        <p><span class="text-neutral-400">Serveur:</span> {{ selectedCharacter.server }}</p>
+                        <p><span class="text-neutral-400">Classe:</span> {{ selectedCharacter.mainClass }}</p>
+                        <p><span class="text-neutral-400">Armes:</span> {{ selectedCharacter.mainWeapon }} / {{ selectedCharacter.secondaryWeapon }}</p>
+                        <p><span class="text-neutral-400">Niveau:</span> {{ selectedCharacter.level }}</p>
+                    </div>
+                </div>
+
+                <!-- Autres informations -->
+                <div class="p-6 rounded-lg bg-slate-800">
+                    <h2 class="mb-4 text-2xl font-bold">Autres informations</h2>
+                    <!-- À remplir plus tard -->
+                </div>
+            </div>
+
+            <!-- Container en 2 parties -->
+            <div class="grid grid-cols-3 gap-6">
+                <!-- Liste des builds (1/3) -->
+                <div class="p-6 rounded-lg bg-slate-800">
+                    <h2 class="mb-4 text-2xl font-bold">Builds</h2>
+                    <div class="space-y-2">
+                        @if (characterBuilds.length === 0) {
+                            <p class="text-neutral-400">Aucun build disponible</p>
+                        } @else {
+                            @for (build of characterBuilds; track build.id) {
+                                <div 
+                                    class="p-4 rounded-lg transition-colors cursor-pointer"
+                                    [class.bg-slate-700]="selectedBuild?.id === build.id"
+                                    [class.bg-slate-900]="selectedBuild?.id !== build.id"
+                                    (click)="onSelectBuild(build)"
+                                >
+                                    <div class="flex justify-between items-center">
+                                        <h3 class="font-semibold">{{ build.name }}</h3>
+                                        @if (build.isWarReady) {
+                                            <span class="px-2 py-1 text-xs text-green-400 rounded-full bg-green-500/20">War Ready</span>
+                                        }
+                                    </div>
+                                    <div class="mt-2 text-sm text-neutral-400">
+                                        <p>{{ build.type }} - {{ build.role }}</p>
+                                        <p>{{ build.mainWeapon }} / {{ build.secondaryWeapon }}</p>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+
+                <!-- Détails du build (2/3) -->
+                <div class="col-span-2 p-6 rounded-lg bg-slate-800">
+                    <h2 class="mb-4 text-2xl font-bold">Détails du build</h2>
+                    @if (!selectedBuild) {
+                        <p class="text-neutral-400">Sélectionnez un build pour voir les détails</p>
+                    } @else {
+                        <div class="grid grid-cols-2 gap-6">
+                            <!-- Informations générales -->
+                            <div class="space-y-4">
+                                <div>
+                                    <h3 class="mb-2 text-lg font-semibold">Informations</h3>
+                                    <div class="space-y-2">
+                                        <p><span class="text-neutral-400">Type:</span> {{ selectedBuild.type }}</p>
+                                        <p><span class="text-neutral-400">Rôle:</span> {{ selectedBuild.role }}</p>
+                                        <p><span class="text-neutral-400">Armes:</span> {{ selectedBuild.mainWeapon }} / {{ selectedBuild.secondaryWeapon }}</p>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="mb-2 text-lg font-semibold">Équipement</h3>
+                                    <div class="space-y-2">
+                                        @if (selectedBuild.gear.head) {
+                                            <p><span class="text-neutral-400">Tête:</span> {{ selectedBuild.gear.head }}</p>
+                                        }
+                                        @if (selectedBuild.gear.chest) {
+                                            <p><span class="text-neutral-400">Torse:</span> {{ selectedBuild.gear.chest }}</p>
+                                        }
+                                        @if (selectedBuild.gear.hands) {
+                                            <p><span class="text-neutral-400">Mains:</span> {{ selectedBuild.gear.hands }}</p>
+                                        }
+                                        @if (selectedBuild.gear.legs) {
+                                            <p><span class="text-neutral-400">Jambes:</span> {{ selectedBuild.gear.legs }}</p>
+                                        }
+                                        @if (selectedBuild.gear.feet) {
+                                            <p><span class="text-neutral-400">Pieds:</span> {{ selectedBuild.gear.feet }}</p>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Attributs -->
+                            <div>
+                                <h3 class="mb-4 text-lg font-semibold">Attributs</h3>
+                                <div class="space-y-4">
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-neutral-400">Force</span>
+                                            <span>{{ selectedBuild.attributes.strength }}</span>
+                                        </div>
+                                        <div class="w-full h-2 rounded-full bg-slate-700">
+                                            <div class="h-2 bg-red-500 rounded-full" [style.width.%]="(selectedBuild.attributes.strength / 300) * 100"></div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-neutral-400">Dextérité</span>
+                                            <span>{{ selectedBuild.attributes.dexterity }}</span>
+                                        </div>
+                                        <div class="w-full h-2 rounded-full bg-slate-700">
+                                            <div class="h-2 bg-green-500 rounded-full" [style.width.%]="(selectedBuild.attributes.dexterity / 300) * 100"></div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-neutral-400">Intelligence</span>
+                                            <span>{{ selectedBuild.attributes.intelligence }}</span>
+                                        </div>
+                                        <div class="w-full h-2 rounded-full bg-slate-700">
+                                            <div class="h-2 bg-blue-500 rounded-full" [style.width.%]="(selectedBuild.attributes.intelligence / 300) * 100"></div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-neutral-400">Focus</span>
+                                            <span>{{ selectedBuild.attributes.focus }}</span>
+                                        </div>
+                                        <div class="w-full h-2 rounded-full bg-slate-700">
+                                            <div class="h-2 bg-yellow-500 rounded-full" [style.width.%]="(selectedBuild.attributes.focus / 300) * 100"></div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="text-neutral-400">Constitution</span>
+                                            <span>{{ selectedBuild.attributes.constitution }}</span>
+                                        </div>
+                                        <div class="w-full h-2 rounded-full bg-slate-700">
+                                            <div class="h-2 bg-purple-500 rounded-full" [style.width.%]="(selectedBuild.attributes.constitution / 300) * 100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<p-dialog 
     [(visible)]="showCreateModal" 
     [modal]="true" 
     [draggable]="false" 
@@ -60,23 +227,23 @@
     styleClass="w-full max-w-lg"
     [header]="'Créer un personnage'">
     
-    <form [formGroup]="characterForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-4">
+    <form [formGroup]="characterForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-4 font-circular-web">
         <div class="flex flex-col gap-2">
-            <label for="name" class="text-sm font-medium text-gray-700">Nom du personnage</label>
+            <label for="name" class="font-medium text-md text-neutral-500">Nom du personnage</label>
             <input 
                 id="name"
                 type="text" 
                 formControlName="name"
-                class="px-4 py-2 rounded-lg border focus:ring-blue-500 focus:border-blue-500"
+                class="px-4 py-2 rounded-lg border border-neutral-500"
             >
         </div>
 
         <div class="flex flex-col gap-2">
-            <label for="server" class="text-sm font-medium text-gray-700">Serveur</label>
+            <label for="server" class="text-sm font-medium text-neutral-500">Serveur</label>
             <select 
                 id="server"
                 formControlName="server"
-                class="px-4 py-2 rounded-lg border focus:ring-blue-500 focus:border-blue-500"
+                class="px-4 py-2 rounded-lg border border-neutral-500"
             >
                 <option value="Asgard">Asgard</option>
                 <option value="Abaton">Abaton</option>
@@ -85,11 +252,11 @@
         </div>
 
         <div class="flex flex-col gap-2">
-            <label for="mainClass" class="text-sm font-medium text-gray-700">Classe principale</label>
+            <label for="mainClass" class="text-sm font-medium text-neutral-500">Classe principale</label>
             <select 
                 id="mainClass"
                 formControlName="mainClass"
-                class="px-4 py-2 rounded-lg border focus:ring-blue-500 focus:border-blue-500"
+                class="px-4 py-2 rounded-lg border border-neutral-500"
             >
                 <option value="DPS">DPS</option>
                 <option value="Tank">Tank</option>
@@ -98,11 +265,11 @@
         </div>
 
         <div class="flex flex-col gap-2">
-            <label for="mainWeapon" class="text-sm font-medium text-gray-700">Arme principale</label>
+            <label for="mainWeapon" class="text-sm font-medium text-neutral-500">Arme principale</label>
             <select 
                 id="mainWeapon"
                 formControlName="mainWeapon"
-                class="px-4 py-2 rounded-lg border focus:ring-blue-500 focus:border-blue-500"
+                class="px-4 py-2 rounded-lg border border-neutral-500"
             >
                 <option value="Sword & Shield">Sword & Shield</option>
                 <option value="Life Staff">Life Staff</option>
@@ -114,11 +281,11 @@
         </div>
 
         <div class="flex flex-col gap-2">
-            <label for="secondaryWeapon" class="text-sm font-medium text-gray-700">Arme secondaire</label>
+            <label for="secondaryWeapon" class="text-sm font-medium text-neutral-500">Arme secondaire</label>
             <select 
                 id="secondaryWeapon"
                 formControlName="secondaryWeapon"
-                class="px-4 py-2 rounded-lg border focus:ring-blue-500 focus:border-blue-500"
+                class="px-4 py-2 rounded-lg border border-neutral-500"
             >
                 <option value="Sword & Shield">Sword & Shield</option>
                 <option value="Life Staff">Life Staff</option>
@@ -130,32 +297,34 @@
         </div>
 
         <div class="flex flex-col gap-2">
-            <label for="level" class="text-sm font-medium text-gray-700">Niveau</label>
+            <label for="level" class="text-sm font-medium text-neutral-500">Niveau</label>
             <input 
                 id="level"
                 type="number" 
                 formControlName="level"
                 min="1"
                 max="60"
-                class="px-4 py-2 rounded-lg border focus:ring-blue-500 focus:border-blue-500"
+                class="px-4 py-2 rounded-lg border border-neutral-500"
             >
         </div>
 
         <div class="flex gap-4 justify-end mt-4">
             <button 
+                pRipple
                 type="button" 
                 (click)="showCreateModal = false"
-                class="px-4 py-2 text-gray-700 rounded-lg border hover:bg-gray-50"
+                class="px-4 py-2 rounded-lg border p-button"
             >
                 Annuler
             </button>
             <button 
+                pRipple
                 type="submit"
-                class="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+                class="px-4 py-2 rounded-lg p-button"
                 [disabled]="!characterForm.valid"
             >
                 Créer
             </button>
         </div>
     </form>
-</p-dialog> -->
+</p-dialog>
